@@ -1,0 +1,4 @@
+# find the source file in src/examples and write the executable in build/examples:
+ADD_EXECUTABLE(the_code the_code.cpp)
+target_link_libraries(the_code ${PCL_LIBRARIES})
+
