@@ -261,6 +261,13 @@ examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/features/impl/feature.hpp
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/features/impl/normal_3d.hpp
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/features/normal_3d.h
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/filters/boost.h
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/filters/filter.h
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/filters/filter_indices.h
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/filters/impl/filter.hpp
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/filters/impl/filter_indices.hpp
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/filters/impl/statistical_outlier_removal.hpp
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/filters/statistical_outlier_removal.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/for_each_type.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/impl/cloud_iterator.hpp
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/impl/instantiate.hpp

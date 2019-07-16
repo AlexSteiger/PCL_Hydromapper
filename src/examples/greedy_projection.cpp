@@ -5,6 +5,7 @@
 #include <pcl/surface/gp3.h>
 #include <pcl/io/vtk_io.h>
 #include <pcl/io/vtk_lib_io.h>  // for savePolygonFileSTL
+#include <pcl/filters/statistical_outlier_removal.h>
 
 int
 main (int argc, char** argv)
@@ -16,20 +17,33 @@ main (int argc, char** argv)
   pcl::fromPCLPointCloud2 (cloud_blob, *cloud);
   //* the data should be available in cloud
 
+// Statistical outlier removal
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
+  sor.setInputCloud (cloud);
+  sor.setMeanK (60);
+  sor.setStddevMulThresh (3.5);
+  sor.setNegative (false);
+  sor.filter (*cloud_filtered);
+  std::cout << cloud->points.size() - cloud_filtered->points.size () << " outliers where removed. ";
+  std::cout << cloud_filtered->points.size() << " points left" << std::endl;
+
+  
+  
   // Normal estimation*
   pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> n;
   pcl::PointCloud<pcl::Normal>::Ptr normals (new pcl::PointCloud<pcl::Normal>);
   pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
-  tree->setInputCloud (cloud);
-  n.setInputCloud (cloud);
+  tree->setInputCloud (cloud_filtered);
+  n.setInputCloud (cloud_filtered);
   n.setSearchMethod (tree);
-  n.setKSearch (20);
+  n.setKSearch (20); //original 20
   n.compute (*normals);
   //* normals should not contain the point normals + surface curvatures
 
   // Concatenate the XYZ and normal fields*
   pcl::PointCloud<pcl::PointNormal>::Ptr cloud_with_normals (new pcl::PointCloud<pcl::PointNormal>);
-  pcl::concatenateFields (*cloud, *normals, *cloud_with_normals);
+  pcl::concatenateFields (*cloud_filtered, *normals, *cloud_with_normals);
   //* cloud_with_normals = cloud + normals
 
   // Create search tree*
@@ -41,11 +55,11 @@ main (int argc, char** argv)
   pcl::PolygonMesh triangles;
 
   // Set the maximum distance between connected points (maximum edge length)
-  gp3.setSearchRadius (0.1); //original 0.025
+  gp3.setSearchRadius (1); //original 0.025
 
-  // Set typical values for the parameters
+  // Set typical values for the parameters   M_PI/4: 45° | M_PI/18: 10° | 2*M_PI/3: 120°
   gp3.setMu (2.5);
-  gp3.setMaximumNearestNeighbors (500); //original 100
+  gp3.setMaximumNearestNeighbors (100); //original 100
   gp3.setMaximumSurfaceAngle(M_PI/4); // 45 degrees
   gp3.setMinimumAngle(M_PI/18); // 10 degrees
   gp3.setMaximumAngle(2*M_PI/3); // 120 degrees
