@@ -236,6 +236,7 @@ examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/common/distances.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/common/eigen.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/common/file_io.h
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/common/geometry.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/common/impl/accumulators.hpp
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/common/impl/angles.hpp
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/common/impl/centroid.hpp
@@ -318,9 +319,14 @@ examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/search/pcl_search.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/search/search.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/boost.h
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/eigen.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/gp3.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/impl/gp3.hpp
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/impl/mls.hpp
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/impl/processing.hpp
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/impl/reconstruction.hpp
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/mls.h
+examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/processing.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/pcl-1.8/pcl/surface/reconstruction.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/vtk-6.3/vtkABI.h
 examples/CMakeFiles/greedy_projection.dir/greedy_projection.cpp.o: /usr/include/vtk-6.3/vtkAbstractArray.h

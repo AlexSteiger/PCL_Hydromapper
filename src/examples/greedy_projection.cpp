@@ -6,6 +6,7 @@
 #include <pcl/io/vtk_io.h>
 #include <pcl/io/vtk_lib_io.h>  // for savePolygonFileSTL
 #include <pcl/filters/statistical_outlier_removal.h>
+#include <pcl/surface/mls.h>  //movingLeastSquares
 
 int
 main (int argc, char** argv)
@@ -16,39 +17,53 @@ main (int argc, char** argv)
   pcl::io::loadPCDFile ("../../Samples_PCD/Spundwand.pcd", cloud_blob);
   pcl::fromPCLPointCloud2 (cloud_blob, *cloud);
   //* the data should be available in cloud
-
-// Statistical outlier removal
+  
+    // Statistical outlier removal
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
   pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
   sor.setInputCloud (cloud);
   sor.setMeanK (60);
-  sor.setStddevMulThresh (3.5);
+  sor.setStddevMulThresh (2);
   sor.setNegative (false);
   sor.filter (*cloud_filtered);
-  std::cout << cloud->points.size() - cloud_filtered->points.size () << " outliers where removed. ";
+  std::cout << cloud.points.size() - cloud_filtered->points.size () << " outliers where removed. ";
   std::cout << cloud_filtered->points.size() << " points left" << std::endl;
-
   
-  
-  // Normal estimation*
-  pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> n;
-  pcl::PointCloud<pcl::Normal>::Ptr normals (new pcl::PointCloud<pcl::Normal>);
+  // Create a KD-Tree
   pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
-  tree->setInputCloud (cloud_filtered);
-  n.setInputCloud (cloud_filtered);
-  n.setSearchMethod (tree);
-  n.setKSearch (20); //original 20
-  n.compute (*normals);
-  //* normals should not contain the point normals + surface curvatures
+  // Output has the PointNormal type in order to store the normals calculated by MLS
+  pcl::PointCloud<pcl::PointNormal> mls_points;
+  // Init object (second point type is for the normals, even if unused)
+  pcl::MovingLeastSquares<pcl::PointXYZ, pcl::PointNormal> mls;
+  mls.setComputeNormals (true);
+  // Set parameters
+  mls.setInputCloud (cloud_filtered);
+  mls.setPolynomialOrder (3);
+  mls.setSearchMethod (tree);
+  mls.setSearchRadius (0.03);
+  // Reconstruct
+  mls.process (mls_points);
+  pcl::io::savePCDFile ("MLS_out.pcd", mls_points);  
 
-  // Concatenate the XYZ and normal fields*
-  pcl::PointCloud<pcl::PointNormal>::Ptr cloud_with_normals (new pcl::PointCloud<pcl::PointNormal>);
-  pcl::concatenateFields (*cloud_filtered, *normals, *cloud_with_normals);
-  //* cloud_with_normals = cloud + normals
+//   // Normal estimation*
+//   pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> n;
+//   pcl::PointCloud<pcl::Normal>::Ptr normals (new pcl::PointCloud<pcl::Normal>);
+//   pcl::search::KdTree<pcl::PointXYZ>::Ptr tree2 (new pcl::search::KdTree<pcl::PointXYZ>);
+//   tree2->setInputCloud (cloud_filtered);
+//   n.setInputCloud (cloud_filtered);
+//   n.setSearchMethod (tree2);
+//   n.setKSearch (20); //original 20
+//   n.compute (*normals);
+//   //* normals should not contain the point normals + surface curvatures
+// 
+//   // Concatenate the XYZ and normal fields*
+//   pcl::PointCloud<pcl::PointNormal>::Ptr cloud_with_normals (new pcl::PointCloud<pcl::PointNormal>);
+//   pcl::concatenateFields (*cloud_filtered, *normals, *cloud_with_normals);
+//   //* cloud_with_normals = cloud + normals
 
   // Create search tree*
-  pcl::search::KdTree<pcl::PointNormal>::Ptr tree2 (new pcl::search::KdTree<pcl::PointNormal>);
-  tree2->setInputCloud (cloud_with_normals);
+  pcl::search::KdTree<pcl::PointNormal>::Ptr tree3 (new pcl::search::KdTree<pcl::PointNormal>);
+  tree3->setInputCloud (mls_points);
 
   // Initialize objects
   pcl::GreedyProjectionTriangulation<pcl::PointNormal> gp3;
@@ -66,8 +81,8 @@ main (int argc, char** argv)
   gp3.setNormalConsistency(false);
 
   // Get result
-  gp3.setInputCloud (cloud_with_normals);
-  gp3.setSearchMethod (tree2);
+  gp3.setInputCloud (mls_points);
+  gp3.setSearchMethod (tree3);
   gp3.reconstruct (triangles);
 
   // Additional vertex information

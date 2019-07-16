@@ -6,11 +6,13 @@
 int
 main (int argc, char** argv)
 {
-  // Load input file into a PointCloud<T> with an appropriate type
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ> ());
-  // Load bun0.pcd -- should be available with the PCL archive in test 
-  pcl::io::loadPCDFile ("../../Samples_PCD/bun0.pcd", *cloud);
-
+  
+// Input Cloud
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PCLPointCloud2 cloud_blob;
+  pcl::io::loadPCDFile ("../../../PCL_Hydromapper/Samples_PCD/Spundwand.pcd", cloud_blob);
+  pcl::fromPCLPointCloud2 (cloud_blob, *cloud);
+  
   std::cout << "Input has: " << cloud->points.size () << " data points." << std::endl;
   
   // Create a KD-Tree
@@ -34,6 +36,6 @@ main (int argc, char** argv)
   mls.process (mls_points);
 
   // Save output
-  pcl::io::savePCDFile ("moving_least_squares_out.pcd", mls_points);
-  std::cout << "Output has: " << cloud->points.size () << " data points." << std::endl;
+  pcl::io::savePCDFile ("Moving_least_squares_out.pcd", mls_points);
+  std::cout << "Output has: " << mls_points.points.size () << " data points." << std::endl;
 }
