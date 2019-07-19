@@ -9,6 +9,8 @@
 /home/alex/Documents/PCL_Hydromapper/src/examples/greedy_projection.cpp
 pcl/point_types.h
 -
+pcl/common/common.h
+-
 pcl/io/pcd_io.h
 -
 pcl/kdtree/kdtree_flann.h
@@ -22,6 +24,8 @@ pcl/io/vtk_io.h
 pcl/io/vtk_lib_io.h
 -
 pcl/filters/statistical_outlier_removal.h
+-
+pcl/filters/filter.h
 -
 pcl/surface/mls.h
 -

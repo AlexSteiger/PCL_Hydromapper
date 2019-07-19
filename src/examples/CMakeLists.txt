@@ -29,3 +29,10 @@ target_link_libraries(greedy_projection ${PCL_LIBRARIES})
 
 ADD_EXECUTABLE(pass_through_filter pass_through_filter.cpp)
 target_link_libraries(pass_through_filter ${PCL_LIBRARIES})
+
+ADD_EXECUTABLE(statistical_outlier_removal statistical_outlier_removal.cpp)
+target_link_libraries(statistical_outlier_removal ${PCL_LIBRARIES})
+
+ADD_EXECUTABLE(surface_reconstruction surface_reconstruction.cpp)
+target_link_libraries(surface_reconstruction ${PCL_LIBRARIES})
+

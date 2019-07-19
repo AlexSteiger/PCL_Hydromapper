@@ -124,6 +124,19 @@ the_code/fast:
 .PHONY : the_code/fast
 
 #=============================================================================
+# Target rules for targets named surface_reconstruction
+
+# Build rule for target.
+surface_reconstruction: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 surface_reconstruction
+.PHONY : surface_reconstruction
+
+# fast build rule for target.
+surface_reconstruction/fast:
+	$(MAKE) -f examples/CMakeFiles/surface_reconstruction.dir/build.make examples/CMakeFiles/surface_reconstruction.dir/build
+.PHONY : surface_reconstruction/fast
+
+#=============================================================================
 # Target rules for targets named pass_through_filter
 
 # Build rule for target.
@@ -202,6 +215,19 @@ random_sample_consensus/fast:
 .PHONY : random_sample_consensus/fast
 
 #=============================================================================
+# Target rules for targets named statistical_outlier_removal
+
+# Build rule for target.
+statistical_outlier_removal: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 statistical_outlier_removal
+.PHONY : statistical_outlier_removal
+
+# fast build rule for target.
+statistical_outlier_removal/fast:
+	$(MAKE) -f examples/CMakeFiles/statistical_outlier_removal.dir/build.make examples/CMakeFiles/statistical_outlier_removal.dir/build
+.PHONY : statistical_outlier_removal/fast
+
+#=============================================================================
 # Target rules for targets named pcd_write
 
 # Build rule for target.
@@ -276,12 +302,14 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... the_code"
 	@echo "... edit_cache"
+	@echo "... surface_reconstruction"
 	@echo "... pass_through_filter"
 	@echo "... greedy_projection"
 	@echo "... difference_of_normals_based_seg"
 	@echo "... concave_hull_2d"
 	@echo "... cylinder_segmentation"
 	@echo "... random_sample_consensus"
+	@echo "... statistical_outlier_removal"
 	@echo "... pcd_write"
 	@echo "... moving_least_squares"
 	@echo "... pcl_visualizer_demo"

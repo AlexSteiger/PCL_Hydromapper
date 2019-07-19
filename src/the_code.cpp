@@ -1,20 +1,14 @@
 #include <iostream>
-#include <pcl/point_types.h>
-#include <pcl/filters/passthrough.h>
+
 #include <pcl/io/pcd_io.h>
+#include <pcl/point_types.h>
 #include <pcl/common/common.h> //for getMinMax3D
-
-#include <pcl/ModelCoefficients.h>
+#include <pcl/ModelCoefficients.h>  //for planar coefficients
 #include <pcl/filters/project_inliers.h>
-
+#include <pcl/filters/passthrough.h>
 #include <pcl/surface/concave_hull.h>
-
-// greedy projection:
-#include <pcl/kdtree/kdtree_flann.h>
-#include <pcl/features/normal_3d.h>
+#include <pcl/surface/reconstruction.h>
 #include <pcl/surface/gp3.h>
-#include <pcl/io/vtk_io.h>
-#include <pcl/io/vtk_lib_io.h>
 
 int
  main (int argc, char** argv)
@@ -84,54 +78,7 @@ int
   std::cerr << "Concave hull has: " << cloud_hull->points.size () << " data points." << std::endl;
   writer.write ("4_Concave_Hull.pcd", *cloud_hull, false);
   
-  // greedy projection
-   pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> n;
-  pcl::PointCloud<pcl::Normal>::Ptr normals (new pcl::PointCloud<pcl::Normal>);
-  pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
-  tree->setInputCloud (cloud_projected);
-  n.setInputCloud (cloud_projected);
-  n.setSearchMethod (tree);
-  n.setKSearch (20);
-  n.compute (*normals);
-  //* normals should not contain the point normals + surface curvatures
-
-  // Concatenate the XYZ and normal fields*
-  pcl::PointCloud<pcl::PointNormal>::Ptr cloud_with_normals (new pcl::PointCloud<pcl::PointNormal>);
-  pcl::concatenateFields (*cloud_projected, *normals, *cloud_with_normals);
-  //* cloud_with_normals = cloud + normals
-
-  // Create search tree*
-  pcl::search::KdTree<pcl::PointNormal>::Ptr tree2 (new pcl::search::KdTree<pcl::PointNormal>);
-  tree2->setInputCloud (cloud_with_normals);
-
-  // Initialize objects
-  pcl::GreedyProjectionTriangulation<pcl::PointNormal> gp3;
-  pcl::PolygonMesh triangles;
-
-  // Set the maximum distance between connected points (maximum edge length)
-  gp3.setSearchRadius (0.1); //original 0.025
-
-  // Set typical values for the parameters
-  gp3.setMu (2.5);
-  gp3.setMaximumNearestNeighbors (500); //original 100
-  gp3.setMaximumSurfaceAngle(M_PI/4); // 45 degrees
-  gp3.setMinimumAngle(M_PI/18); // 10 degrees
-  gp3.setMaximumAngle(2*M_PI/3); // 120 degrees
-  gp3.setNormalConsistency(false);
-
-  // Get result
-  gp3.setInputCloud (cloud_with_normals);
-  gp3.setSearchMethod (tree2);
-  gp3.reconstruct (triangles);
-
-  // Additional vertex information
-  std::vector<int> parts = gp3.getPartIDs();
-  std::vector<int> states = gp3.getPointStates();
-
-  // Saving and viewing the result
-  pcl::io::saveVTKFile("GreedyProjectionMesh.vtk", triangles);
-  pcl::io::savePolygonFileSTL("GreedyProjectionMesh.stl", triangles);
+  
   
   return (0);
 }
-

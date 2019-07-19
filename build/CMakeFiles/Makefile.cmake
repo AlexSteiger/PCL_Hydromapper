@@ -250,12 +250,14 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/the_code.dir/DependInfo.cmake"
+  "examples/CMakeFiles/surface_reconstruction.dir/DependInfo.cmake"
   "examples/CMakeFiles/pass_through_filter.dir/DependInfo.cmake"
   "examples/CMakeFiles/greedy_projection.dir/DependInfo.cmake"
   "examples/CMakeFiles/difference_of_normals_based_seg.dir/DependInfo.cmake"
   "examples/CMakeFiles/concave_hull_2d.dir/DependInfo.cmake"
   "examples/CMakeFiles/cylinder_segmentation.dir/DependInfo.cmake"
   "examples/CMakeFiles/random_sample_consensus.dir/DependInfo.cmake"
+  "examples/CMakeFiles/statistical_outlier_removal.dir/DependInfo.cmake"
   "examples/CMakeFiles/pcd_write.dir/DependInfo.cmake"
   "examples/CMakeFiles/moving_least_squares.dir/DependInfo.cmake"
   "examples/CMakeFiles/pcl_visualizer_demo.dir/DependInfo.cmake"

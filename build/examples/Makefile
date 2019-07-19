@@ -111,6 +111,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+examples/CMakeFiles/surface_reconstruction.dir/rule:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/surface_reconstruction.dir/rule
+.PHONY : examples/CMakeFiles/surface_reconstruction.dir/rule
+
+# Convenience name for target.
+surface_reconstruction: examples/CMakeFiles/surface_reconstruction.dir/rule
+
+.PHONY : surface_reconstruction
+
+# fast build rule for target.
+surface_reconstruction/fast:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/surface_reconstruction.dir/build.make examples/CMakeFiles/surface_reconstruction.dir/build
+.PHONY : surface_reconstruction/fast
+
+# Convenience name for target.
 examples/CMakeFiles/pass_through_filter.dir/rule:
 	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/pass_through_filter.dir/rule
 .PHONY : examples/CMakeFiles/pass_through_filter.dir/rule
@@ -199,6 +214,21 @@ random_sample_consensus: examples/CMakeFiles/random_sample_consensus.dir/rule
 random_sample_consensus/fast:
 	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/random_sample_consensus.dir/build.make examples/CMakeFiles/random_sample_consensus.dir/build
 .PHONY : random_sample_consensus/fast
+
+# Convenience name for target.
+examples/CMakeFiles/statistical_outlier_removal.dir/rule:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/statistical_outlier_removal.dir/rule
+.PHONY : examples/CMakeFiles/statistical_outlier_removal.dir/rule
+
+# Convenience name for target.
+statistical_outlier_removal: examples/CMakeFiles/statistical_outlier_removal.dir/rule
+
+.PHONY : statistical_outlier_removal
+
+# fast build rule for target.
+statistical_outlier_removal/fast:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/statistical_outlier_removal.dir/build.make examples/CMakeFiles/statistical_outlier_removal.dir/build
+.PHONY : statistical_outlier_removal/fast
 
 # Convenience name for target.
 examples/CMakeFiles/pcd_write.dir/rule:
@@ -488,6 +518,60 @@ random_sample_consensus.cpp.s:
 	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/random_sample_consensus.dir/build.make examples/CMakeFiles/random_sample_consensus.dir/random_sample_consensus.cpp.s
 .PHONY : random_sample_consensus.cpp.s
 
+statistical_outlier_removal.o: statistical_outlier_removal.cpp.o
+
+.PHONY : statistical_outlier_removal.o
+
+# target to build an object file
+statistical_outlier_removal.cpp.o:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/statistical_outlier_removal.dir/build.make examples/CMakeFiles/statistical_outlier_removal.dir/statistical_outlier_removal.cpp.o
+.PHONY : statistical_outlier_removal.cpp.o
+
+statistical_outlier_removal.i: statistical_outlier_removal.cpp.i
+
+.PHONY : statistical_outlier_removal.i
+
+# target to preprocess a source file
+statistical_outlier_removal.cpp.i:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/statistical_outlier_removal.dir/build.make examples/CMakeFiles/statistical_outlier_removal.dir/statistical_outlier_removal.cpp.i
+.PHONY : statistical_outlier_removal.cpp.i
+
+statistical_outlier_removal.s: statistical_outlier_removal.cpp.s
+
+.PHONY : statistical_outlier_removal.s
+
+# target to generate assembly for a file
+statistical_outlier_removal.cpp.s:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/statistical_outlier_removal.dir/build.make examples/CMakeFiles/statistical_outlier_removal.dir/statistical_outlier_removal.cpp.s
+.PHONY : statistical_outlier_removal.cpp.s
+
+surface_reconstruction.o: surface_reconstruction.cpp.o
+
+.PHONY : surface_reconstruction.o
+
+# target to build an object file
+surface_reconstruction.cpp.o:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/surface_reconstruction.dir/build.make examples/CMakeFiles/surface_reconstruction.dir/surface_reconstruction.cpp.o
+.PHONY : surface_reconstruction.cpp.o
+
+surface_reconstruction.i: surface_reconstruction.cpp.i
+
+.PHONY : surface_reconstruction.i
+
+# target to preprocess a source file
+surface_reconstruction.cpp.i:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/surface_reconstruction.dir/build.make examples/CMakeFiles/surface_reconstruction.dir/surface_reconstruction.cpp.i
+.PHONY : surface_reconstruction.cpp.i
+
+surface_reconstruction.s: surface_reconstruction.cpp.s
+
+.PHONY : surface_reconstruction.s
+
+# target to generate assembly for a file
+surface_reconstruction.cpp.s:
+	cd /home/alex/Documents/PCL_Hydromapper/build && $(MAKE) -f examples/CMakeFiles/surface_reconstruction.dir/build.make examples/CMakeFiles/surface_reconstruction.dir/surface_reconstruction.cpp.s
+.PHONY : surface_reconstruction.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -495,6 +579,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... surface_reconstruction"
 	@echo "... pass_through_filter"
 	@echo "... greedy_projection"
 	@echo "... rebuild_cache"
@@ -502,6 +587,7 @@ help:
 	@echo "... concave_hull_2d"
 	@echo "... cylinder_segmentation"
 	@echo "... random_sample_consensus"
+	@echo "... statistical_outlier_removal"
 	@echo "... pcd_write"
 	@echo "... moving_least_squares"
 	@echo "... pcl_visualizer_demo"
@@ -532,6 +618,12 @@ help:
 	@echo "... random_sample_consensus.o"
 	@echo "... random_sample_consensus.i"
 	@echo "... random_sample_consensus.s"
+	@echo "... statistical_outlier_removal.o"
+	@echo "... statistical_outlier_removal.i"
+	@echo "... statistical_outlier_removal.s"
+	@echo "... surface_reconstruction.o"
+	@echo "... surface_reconstruction.i"
+	@echo "... surface_reconstruction.s"
 .PHONY : help
 
 

@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/alex/Documents/PCL_Hydromapper/build
 CMakeFiles/the_code.dir/all:
 	$(MAKE) -f CMakeFiles/the_code.dir/build.make CMakeFiles/the_code.dir/depend
 	$(MAKE) -f CMakeFiles/the_code.dir/build.make CMakeFiles/the_code.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alex/Documents/PCL_Hydromapper/build/CMakeFiles --progress-num=19,20 "Built target the_code"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alex/Documents/PCL_Hydromapper/build/CMakeFiles --progress-num=23,24 "Built target the_code"
 .PHONY : CMakeFiles/the_code.dir/all
 
 # Include target in all.
@@ -100,12 +100,14 @@ clean: CMakeFiles/the_code.dir/clean
 # Directory level rules for directory examples
 
 # Convenience name for "all" pass in the directory.
+examples/all: examples/CMakeFiles/surface_reconstruction.dir/all
 examples/all: examples/CMakeFiles/pass_through_filter.dir/all
 examples/all: examples/CMakeFiles/greedy_projection.dir/all
 examples/all: examples/CMakeFiles/difference_of_normals_based_seg.dir/all
 examples/all: examples/CMakeFiles/concave_hull_2d.dir/all
 examples/all: examples/CMakeFiles/cylinder_segmentation.dir/all
 examples/all: examples/CMakeFiles/random_sample_consensus.dir/all
+examples/all: examples/CMakeFiles/statistical_outlier_removal.dir/all
 examples/all: examples/CMakeFiles/pcd_write.dir/all
 examples/all: examples/CMakeFiles/moving_least_squares.dir/all
 examples/all: examples/CMakeFiles/pcl_visualizer_demo.dir/all
@@ -113,12 +115,14 @@ examples/all: examples/CMakeFiles/pcl_visualizer_demo.dir/all
 .PHONY : examples/all
 
 # Convenience name for "clean" pass in the directory.
+examples/clean: examples/CMakeFiles/surface_reconstruction.dir/clean
 examples/clean: examples/CMakeFiles/pass_through_filter.dir/clean
 examples/clean: examples/CMakeFiles/greedy_projection.dir/clean
 examples/clean: examples/CMakeFiles/difference_of_normals_based_seg.dir/clean
 examples/clean: examples/CMakeFiles/concave_hull_2d.dir/clean
 examples/clean: examples/CMakeFiles/cylinder_segmentation.dir/clean
 examples/clean: examples/CMakeFiles/random_sample_consensus.dir/clean
+examples/clean: examples/CMakeFiles/statistical_outlier_removal.dir/clean
 examples/clean: examples/CMakeFiles/pcd_write.dir/clean
 examples/clean: examples/CMakeFiles/moving_least_squares.dir/clean
 examples/clean: examples/CMakeFiles/pcl_visualizer_demo.dir/clean
@@ -129,6 +133,43 @@ examples/clean: examples/CMakeFiles/pcl_visualizer_demo.dir/clean
 examples/preinstall:
 
 .PHONY : examples/preinstall
+
+#=============================================================================
+# Target rules for target examples/CMakeFiles/surface_reconstruction.dir
+
+# All Build rule for target.
+examples/CMakeFiles/surface_reconstruction.dir/all:
+	$(MAKE) -f examples/CMakeFiles/surface_reconstruction.dir/build.make examples/CMakeFiles/surface_reconstruction.dir/depend
+	$(MAKE) -f examples/CMakeFiles/surface_reconstruction.dir/build.make examples/CMakeFiles/surface_reconstruction.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alex/Documents/PCL_Hydromapper/build/CMakeFiles --progress-num=21,22 "Built target surface_reconstruction"
+.PHONY : examples/CMakeFiles/surface_reconstruction.dir/all
+
+# Include target in all.
+all: examples/CMakeFiles/surface_reconstruction.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+examples/CMakeFiles/surface_reconstruction.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alex/Documents/PCL_Hydromapper/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/surface_reconstruction.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alex/Documents/PCL_Hydromapper/build/CMakeFiles 0
+.PHONY : examples/CMakeFiles/surface_reconstruction.dir/rule
+
+# Convenience name for target.
+surface_reconstruction: examples/CMakeFiles/surface_reconstruction.dir/rule
+
+.PHONY : surface_reconstruction
+
+# clean rule for target.
+examples/CMakeFiles/surface_reconstruction.dir/clean:
+	$(MAKE) -f examples/CMakeFiles/surface_reconstruction.dir/build.make examples/CMakeFiles/surface_reconstruction.dir/clean
+.PHONY : examples/CMakeFiles/surface_reconstruction.dir/clean
+
+# clean rule for target.
+clean: examples/CMakeFiles/surface_reconstruction.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Target rules for target examples/CMakeFiles/pass_through_filter.dir
@@ -349,6 +390,43 @@ examples/CMakeFiles/random_sample_consensus.dir/clean:
 
 # clean rule for target.
 clean: examples/CMakeFiles/random_sample_consensus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target examples/CMakeFiles/statistical_outlier_removal.dir
+
+# All Build rule for target.
+examples/CMakeFiles/statistical_outlier_removal.dir/all:
+	$(MAKE) -f examples/CMakeFiles/statistical_outlier_removal.dir/build.make examples/CMakeFiles/statistical_outlier_removal.dir/depend
+	$(MAKE) -f examples/CMakeFiles/statistical_outlier_removal.dir/build.make examples/CMakeFiles/statistical_outlier_removal.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alex/Documents/PCL_Hydromapper/build/CMakeFiles --progress-num=19,20 "Built target statistical_outlier_removal"
+.PHONY : examples/CMakeFiles/statistical_outlier_removal.dir/all
+
+# Include target in all.
+all: examples/CMakeFiles/statistical_outlier_removal.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+examples/CMakeFiles/statistical_outlier_removal.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alex/Documents/PCL_Hydromapper/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/statistical_outlier_removal.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alex/Documents/PCL_Hydromapper/build/CMakeFiles 0
+.PHONY : examples/CMakeFiles/statistical_outlier_removal.dir/rule
+
+# Convenience name for target.
+statistical_outlier_removal: examples/CMakeFiles/statistical_outlier_removal.dir/rule
+
+.PHONY : statistical_outlier_removal
+
+# clean rule for target.
+examples/CMakeFiles/statistical_outlier_removal.dir/clean:
+	$(MAKE) -f examples/CMakeFiles/statistical_outlier_removal.dir/build.make examples/CMakeFiles/statistical_outlier_removal.dir/clean
+.PHONY : examples/CMakeFiles/statistical_outlier_removal.dir/clean
+
+# clean rule for target.
+clean: examples/CMakeFiles/statistical_outlier_removal.dir/clean
 
 .PHONY : clean
 
